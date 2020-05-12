@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Category, Notification, EventArtist, Event
 from .serializers import CategorySerializer, NotificationSerializer, EventArtistSerializer, EventSerializer
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.pagination import PageNumberPagination
 # Create your views here.
 
 
@@ -22,8 +23,15 @@ class NotificationViewSet(ModelViewSet):
         return queryset
 
 
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 20
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
+
+
 class EventViewSet(ModelViewSet):
     serializer_class = EventSerializer
+    pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
         queryset = Event.objects.all()
