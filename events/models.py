@@ -20,6 +20,7 @@ class Event(models.Model):
     price = models.DecimalField(max_digits=100, decimal_places=2)
     details = models.TextField()
     image = models.ImageField(upload_to='events')
+    url = models.URLField()
 
 
 class EventArtist(models.Model):
