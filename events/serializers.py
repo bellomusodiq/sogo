@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Event, EventArtist, Category, Notification
+from .models import Event, EventArtist, Category, Notification, MyTicket
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -37,3 +37,14 @@ class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         fields = '__all__'
         model = Notification
+
+
+class MyTicketSerializer(serializers.ModelSerializer):
+    event_details = serializers.SerializerMethodField()
+
+    class Meta:
+        fields = '__all__'
+        model = MyTicket
+
+    def get_event_details(self, obj):
+        return EventSerializer(obj.event).data

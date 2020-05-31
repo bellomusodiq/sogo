@@ -13,3 +13,7 @@ class UserViewSet(ModelViewSet):
         queryset = User.objects.all()
 
         return queryset
+
+
+def jwt_response_payload_handler(token, user=None, request=None):
+    return dict(token=token, userid=user.id)

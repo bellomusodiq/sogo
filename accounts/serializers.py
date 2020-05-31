@@ -43,3 +43,7 @@ class UserSerializer(serializers.ModelSerializer):
             pass
         instance.save()
         return instance
+
+
+def jwt_response_payload_handler(token, user=None, request=None):
+    return dict(token=token, userid=user.id)

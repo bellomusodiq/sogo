@@ -147,6 +147,8 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
 }
 
+PAYSTACK_PUBLIC_KEY='pk_test_d3f01ffa7bdb152e694edb9cdb174138e1da33aa',
+PAYSTACK_SECRET_KEY='sk_test_40842031d9cd521f662260d98a0248ed8c569d73'
 
 import django_heroku
 django_heroku.settings(locals())

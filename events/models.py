@@ -13,7 +13,9 @@ class Category(models.Model):
 
 
 class Event(models.Model):
+
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    event_type = models.CharField(max_length=100, choices=(('live', 'live'), ('360videos', '360videos')))
     title = models.CharField(max_length=200)
     date = models.DateField()
     time = models.TimeField()
@@ -22,6 +24,7 @@ class Event(models.Model):
     details = models.TextField()
     image = models.ImageField(upload_to='events')
     url = models.URLField()
+    is_live = models.BooleanField(default=False)
 
 
 class EventArtist(models.Model):
@@ -33,3 +36,12 @@ class EventArtist(models.Model):
 class Notification(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     message = models.CharField(max_length=400)
+    date = models.DateField(auto_now_add=True)
+
+    class Meta:
+        get_latest_by = ['-date']
+
+
+class MyTicket(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
