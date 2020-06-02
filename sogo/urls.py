@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from accounts.views import UserViewSet
+from accounts.views import UserViewSet, ProfileAndVRViewSet
 from events.views import (
     CategoryViewSet, NotificationViewSet,
     EventViewSet, EventArtistViewSet,
-    MyTicketViewSet, BookTicketAPIView
+    MyTicketViewSet, BookTicketAPIView,
+    EventImageViewSet
 )
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
 from django.conf.urls.static import static
@@ -35,6 +36,8 @@ router.register('notifications', NotificationViewSet, 'notifications')
 router.register('events', EventViewSet, 'events')
 router.register('event-artist', EventArtistViewSet, 'event-artist')
 router.register('my-tickets', MyTicketViewSet, 'my-tickets')
+router.register('event-image', EventImageViewSet, 'event-image')
+router.register('profile', ProfileAndVRViewSet, 'profile')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

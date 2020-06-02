@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from .models import ProfileAndVR
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -43,6 +44,12 @@ class UserSerializer(serializers.ModelSerializer):
             pass
         instance.save()
         return instance
+
+
+class ProfileAndVRSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = '__all__'
+        model = ProfileAndVR
 
 
 def jwt_response_payload_handler(token, user=None, request=None):

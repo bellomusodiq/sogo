@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from .models import Category, Notification, EventArtist, Event, MyTicket
+from .models import Category, Notification, EventArtist, Event, MyTicket, \
+    EventImage
 from .serializers import CategorySerializer, NotificationSerializer, \
-    EventArtistSerializer, EventSerializer, MyTicketSerializer
+    EventArtistSerializer, EventSerializer, MyTicketSerializer, \
+    EventImageSerializer
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
 from rest_framework.pagination import PageNumberPagination
@@ -109,4 +111,16 @@ class MyTicketViewSet(ModelViewSet):
         user = self.request.GET.get('user')
         if user and (user == 'true'):
             queryset = queryset.filter(user=self.request.user)
+        return queryset
+
+
+class EventImageViewSet(ModelViewSet):
+    serializer_class = EventImageSerializer
+
+    def get_queryset(self):
+        queryset = EventImage.objects.all()
+
+        event = self.request.GET.get('event')
+        if event:
+            queryset = queryset.filter(event=event)
         return queryset

@@ -27,6 +27,11 @@ class Event(models.Model):
     is_live = models.BooleanField(default=False)
 
 
+class EventImage(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='events')
+
+
 class EventArtist(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='artist')
