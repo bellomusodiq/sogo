@@ -44,6 +44,11 @@ class EventViewSet(ModelViewSet):
     serializer_class = EventSerializer
     pagination_class = StandardResultsSetPagination
 
+    def get_serializer_context(self):
+        context = super(EventViewSet, self).get_serializer_context()
+        context.update({"request": self.request})
+        return context
+    
     def get_queryset(self):
         queryset = Event.objects.all()
         q = self.request.GET.get('q')

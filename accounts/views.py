@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.views import APIView
 from .serializers import UserSerializer, ProfileAndVRSerializer
 from .models import ProfileAndVR
 from django.contrib.auth.models import User

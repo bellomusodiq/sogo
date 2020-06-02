@@ -25,6 +25,7 @@ class EventSerializer(serializers.ModelSerializer):
     category_name = serializers.SerializerMethodField()
     artists = serializers.SerializerMethodField()
     other_images = serializers.SerializerMethodField()
+    paid = serializers.SerializerMethodField()
 
     class Meta:
         fields = '__all__'
@@ -44,6 +45,17 @@ class EventSerializer(serializers.ModelSerializer):
         for image in obj.eventimage_set.all():
             other_images.append(EventImageSerializer(image).data)
         return other_images
+
+    def get_paid(self, obj, *args, **kwargs):
+        val = False
+        request = self.context.get('request')
+        my_tickets = MyTicket.objects.filter(user=request.user)
+        try:
+            confirmed_ticket = my_tickets.get(user=request.user, event=obj)
+            val = True
+        except MyTicket.DoesNotExist:
+            pass
+        return val
 
 
 class NotificationSerializer(serializers.ModelSerializer):
