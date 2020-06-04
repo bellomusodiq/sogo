@@ -47,6 +47,7 @@ class EventViewSet(ModelViewSet):
     def get_serializer_context(self):
         context = super(EventViewSet, self).get_serializer_context()
         context.update({"request": self.request})
+        print(context)
         return context
     
     def get_queryset(self):
@@ -63,6 +64,9 @@ class EventViewSet(ModelViewSet):
         event_type = self.request.GET.get('type')
         if event_type:
             queryset = queryset.filter(event_type=event_type)
+        upcoming = self.request.GET.get('upcoming')
+        if upcoming and (upcoming == 'true'):
+            queryset = queryset.filter(date__gte=timezone.now())
         return queryset
 
 
@@ -117,6 +121,12 @@ class MyTicketViewSet(ModelViewSet):
         if user and (user == 'true'):
             queryset = queryset.filter(user=self.request.user)
         return queryset
+
+    def get_serializer_context(self):
+        context = super(MyTicketViewSet, self).get_serializer_context()
+        context.update({"request": self.request})
+        print(context)
+        return context
 
 
 class EventImageViewSet(ModelViewSet):

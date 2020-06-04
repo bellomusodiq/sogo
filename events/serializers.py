@@ -48,6 +48,7 @@ class EventSerializer(serializers.ModelSerializer):
 
     def get_paid(self, obj, *args, **kwargs):
         val = False
+        print(self.context)
         request = self.context.get('request')
         my_tickets = MyTicket.objects.filter(user=request.user)
         try:
@@ -73,4 +74,4 @@ class MyTicketSerializer(serializers.ModelSerializer):
         model = MyTicket
 
     def get_event_details(self, obj):
-        return EventSerializer(obj.event).data
+        return EventSerializer(obj.event, context=self.context).data
