@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7517e6fc-05d1-4edd-8468-4ddfd825040f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/events/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/events/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/events/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,7 +78,9 @@
       <workItem from="1589292116635" duration="3704000" />
       <workItem from="1590911470112" duration="1834000" />
       <workItem from="1590919342020" duration="10212000" />
-      <workItem from="1591115360195" duration="10458000" />
+      <workItem from="1591115360195" duration="11626000" />
+      <workItem from="1592416348643" duration="675000" />
+      <workItem from="1594153123111" duration="1747000" />
     </task>
     <servers />
   </component>

@@ -12,6 +12,7 @@ from .verify_payment import verify_transaction
 from rest_framework import validators, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from datetime import timedelta
 
 
 # Create your views here.
@@ -67,6 +68,24 @@ class EventViewSet(ModelViewSet):
         upcoming = self.request.GET.get('upcoming')
         if upcoming and (upcoming == 'true'):
             queryset = queryset.filter(date__gte=timezone.now())
+        category = self.request.GET.get('category')
+        if category:
+            queryset = queryset.filter(category__id=category)
+        date = self.request.GET.get('date')
+        if date:
+            queryset = queryset.filter(date=date)
+        special_date = self.request.GET.get('special_date')
+        if special_date and (special_date == 'today'):
+            queryset = queryset.filter(date=timezone.now())
+        if special_date and (special_date == 'tomorrow'):
+            queryset = queryset.filter(date=timezone.now() + timedelta(days=1))
+        # if special_date and (special_date == 'weekend'):
+        #     current_date = timezone.now()
+        #     if (current_date.weekday() == 5) or (current_date.weekday() == 6):
+        #         queryset = queryset.filter()
+        location = self.request.GET.get('location')
+        if location:
+            queryset = queryset.filter(location__icontains=location)
         return queryset
 
 
