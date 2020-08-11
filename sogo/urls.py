@@ -17,7 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from accounts.views import UserViewSet, ProfileAndVRViewSet
+from accounts.views import (
+    UserViewSet, ProfileAndVRViewSet,
+    ChangePassword,
+    SendResetPassword, ConfirmResetToken,
+    ResetPassword
+)
 from events.views import (
     CategoryViewSet, NotificationViewSet,
     EventViewSet, EventArtistViewSet,
@@ -42,6 +47,10 @@ router.register('profile', ProfileAndVRViewSet, 'profile')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/change-password/', ChangePassword.as_view()),
+    path('api/send-reset-password/', SendResetPassword.as_view()),
+    path('api/confirm-reset-token/', ConfirmResetToken.as_view()),
+    path('api/reset-password/', ResetPassword.as_view()),
     path('api/login/', obtain_jwt_token),
     path('api/verify-token/', verify_jwt_token),
     path('api/book-ticket/', BookTicketAPIView.as_view()),
