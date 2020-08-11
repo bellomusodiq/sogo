@@ -13,7 +13,6 @@ from rest_framework import validators, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from datetime import timedelta
-from .consumers import NotificationConsumer
 
 
 # Create your views here.
