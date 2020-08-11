@@ -77,7 +77,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'sogo.wsgi.application'
-ASGI_APPLICATION = 'sogo.routing.application'
 
 
 # Database
