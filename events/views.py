@@ -23,8 +23,15 @@ class CategoryViewSet(ModelViewSet):
     queryset = Category.objects.all()
 
 
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 20
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
+
+
 class NotificationViewSet(ModelViewSet):
     serializer_class = NotificationSerializer
+    pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
         user = self.request.GET.get('user')
@@ -33,12 +40,6 @@ class NotificationViewSet(ModelViewSet):
             queryset = queryset.filter(user__pk=user)
 
         return queryset
-
-
-class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 20
-    page_size_query_param = 'page_size'
-    max_page_size = 1000
 
 
 class EventViewSet(ModelViewSet):
