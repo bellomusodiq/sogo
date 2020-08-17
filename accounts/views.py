@@ -3,8 +3,8 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
 from rest_framework import status, permissions
 from rest_framework.response import Response
-from .serializers import UserSerializer, ProfileAndVRSerializer
-from .models import ProfileAndVR, AccountResetLink
+from .serializers import UserSerializer, ProfileAndVRSerializer, FeedBackSerializer
+from .models import ProfileAndVR, AccountResetLink, FeedBack
 from django.contrib.auth.models import User
 from django.core.mail import EmailMultiAlternatives
 import datetime
@@ -13,8 +13,6 @@ import string
 import random
 
 # Create your views here.
-
-
 
 
 def generate_token():
@@ -227,6 +225,11 @@ class ResetPassword(APIView):
             return Response({"message": "password changed successful"}, status=status.HTTP_201_CREATED)
         else:
             return Response({"message": "Reset token has expired"})
+
+
+class FeedBackViewSet(ModelViewSet):
+    queryset = FeedBack.objects.all()
+    serializer_class = FeedBackSerializer
 
 
 def jwt_response_payload_handler(token, user=None, request=None):

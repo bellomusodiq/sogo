@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import ProfileAndVR
+from .models import ProfileAndVR, FeedBack
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -50,6 +50,13 @@ class ProfileAndVRSerializer(serializers.ModelSerializer):
     class Meta:
         fields = '__all__'
         model = ProfileAndVR
+
+
+class FeedBackSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        fields = '__all__'
+        model = FeedBack
 
 
 def jwt_response_payload_handler(token, user=None, request=None):

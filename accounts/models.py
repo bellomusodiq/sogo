@@ -20,6 +20,17 @@ class ProfileAndVR(models.Model):
     vr_phone_number = models.CharField(max_length=225, blank=True, null=True)
 
 
+class FeedBack(models.Model):
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        ordering = ['-pk']
+
+
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:
