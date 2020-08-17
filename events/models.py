@@ -44,7 +44,7 @@ class Notification(models.Model):
     date = models.DateField(auto_now_add=True)
 
     class Meta:
-        get_latest_by = ['-date']
+        ordering = ['-date']
 
 
 class MyTicket(models.Model):
