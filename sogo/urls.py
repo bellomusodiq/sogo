@@ -21,7 +21,7 @@ from accounts.views import (
     UserViewSet, ProfileAndVRViewSet,
     ChangePassword,
     SendResetPassword, ConfirmResetToken,
-    ResetPassword
+    ResetPassword, FeedBackViewSet
 )
 from events.views import (
     CategoryViewSet, NotificationViewSet,
@@ -43,6 +43,7 @@ router.register('event-artist', EventArtistViewSet, 'event-artist')
 router.register('my-tickets', MyTicketViewSet, 'my-tickets')
 router.register('event-image', EventImageViewSet, 'event-image')
 router.register('profile', ProfileAndVRViewSet, 'profile')
+router.register('feed-back', FeedBackViewSet, 'feed-back')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
