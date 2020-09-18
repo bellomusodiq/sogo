@@ -159,8 +159,6 @@ JWT_AUTH = {
 PAYSTACK_PUBLIC_KEY='pk_test_d3f01ffa7bdb152e694edb9cdb174138e1da33aa',
 PAYSTACK_SECRET_KEY='sk_test_40842031d9cd521f662260d98a0248ed8c569d73'
 
-import django_heroku
-django_heroku.settings(locals())
 
 EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = '119a9d1cfc2983'
