@@ -31,6 +31,7 @@ from events.views import (
 )
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 from django.conf import settings
 
 router = routers.DefaultRouter()
@@ -55,6 +56,7 @@ urlpatterns = [
     path('api/login/', obtain_jwt_token),
     path('api/verify-token/', verify_jwt_token),
     path('api/book-ticket/', BookTicketAPIView.as_view()),
+    path('', TemplateView.as_view(template_name='index.html'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

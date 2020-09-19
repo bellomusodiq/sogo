@@ -38,8 +38,8 @@ def send_activation_token(user, profile):
                               'admin@lms.com.ng', user.email
     text_content = 'Hey {} please reset password'.format(user.username)
     html_content = '<p>Hey {a} please reset password .' \
-                   '</p><a href="https://localhost:8000.com.ng/reset-password/{b}">' \
-                   'https://holidaypro.com.ng/reset-password/{b}</a>' \
+                   '</p><a href="https://sogovr.com/reset-password/{b}">' \
+                   'https://sogovr.com/reset-password/{b}</a>' \
         .format(a=user.username, b=profile.activation_token)
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
     msg.attach_alternative(html_content, "text/html")
@@ -173,8 +173,8 @@ class SendResetPassword(APIView):
             subject, from_email, to = 'Reset password from Holidaypro', 'admin@holidaypro.com.ng', email
             text_content = 'Hey {} please reset password'.format(user.username)
             html_content = '<p>Hey {a} please reset password .' \
-                           '</p><a href="https://holidaypro.com.ng/reset-password/{b}">' \
-                           'https://holidaypro.com.ng/reset-password/{b}</a>' \
+                           '</p><a href="https://sogovr.com/reset-password/{b}">' \
+                           'https://sogovr.com/reset-password/{b}</a>' \
                 .format(a=user.username, b=link.reset_token)
             msg = EmailMultiAlternatives(
                 subject, text_content, from_email, [to])

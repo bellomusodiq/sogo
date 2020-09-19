@@ -23,13 +23,16 @@ class Event(models.Model):
     price = models.DecimalField(max_digits=100, decimal_places=2)
     details = models.TextField()
     image = models.ImageField(upload_to='events')
-    url = models.URLField()
+    url = models.FileField(upload_to='events')
     is_live = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
 
 
 class EventImage(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='events')
+    image = models.ImageField(upload_to='events-images')
 
 
 class EventArtist(models.Model):
