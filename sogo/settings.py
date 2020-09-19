@@ -27,7 +27,7 @@ SECRET_KEY = '$2ap%%@35*8&3*35l#-)any#masebsv1ib7$@xb3mgiy77t0m-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'sogovr.com', 'www.sogovr.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
