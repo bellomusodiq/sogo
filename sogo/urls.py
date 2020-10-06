@@ -29,6 +29,12 @@ from events.views import (
     MyTicketViewSet, BookTicketAPIView,
     EventImageViewSet
 )
+from landing_shop.views import (
+    LandingView, ContactViewSet,
+    FooterView, TermsOfServiceView,
+    PrivatePolicyView, AboutView,
+    ProductViewSet
+)
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
@@ -45,6 +51,8 @@ router.register('my-tickets', MyTicketViewSet, 'my-tickets')
 router.register('event-image', EventImageViewSet, 'event-image')
 router.register('profile', ProfileAndVRViewSet, 'profile')
 router.register('feed-back', FeedBackViewSet, 'feed-back')
+router.register('contact', ContactViewSet, 'contact')
+router.register('products', ProductViewSet, 'products')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -56,6 +64,11 @@ urlpatterns = [
     path('api/login/', obtain_jwt_token),
     path('api/verify-token/', verify_jwt_token),
     path('api/book-ticket/', BookTicketAPIView.as_view()),
+    path('api/landing/', LandingView.as_view()),
+    path('api/footer/', FooterView.as_view()),
+    path('api/terms/', TermsOfServiceView.as_view()),
+    path('api/privacy/', PrivatePolicyView.as_view()),
+    path('api/about/', AboutView.as_view()),
     path('', TemplateView.as_view(template_name='index.html'))
 ]
 

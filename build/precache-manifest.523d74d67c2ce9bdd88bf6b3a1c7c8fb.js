@@ -1,31 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "90aebe12c0e85df591751ddc4a5bdca1",
+    "revision": "1583514e800f2fc34401cb88dff325d0",
     "url": "/index.html"
   },
   {
-    "revision": "7476b2bcd3bbb5082ca8",
-    "url": "/static/css/main.360544a0.chunk.css"
+    "revision": "de458457b16d1bfec755",
+    "url": "/static/css/main.32dabca2.chunk.css"
   },
   {
-    "revision": "6e160506b9f46e70e90e",
-    "url": "/static/js/2.cb5a8142.chunk.js"
+    "revision": "777d7ea292a804ccbc8c",
+    "url": "/static/js/2.52406315.chunk.js"
   },
   {
-    "revision": "5ac48c47bb3912b14c2d8de4f56d5ae8",
-    "url": "/static/js/2.cb5a8142.chunk.js.LICENSE.txt"
+    "revision": "3453b8997016469371284a28c0e873e2",
+    "url": "/static/js/2.52406315.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7476b2bcd3bbb5082ca8",
-    "url": "/static/js/main.c7c162fb.chunk.js"
+    "revision": "de458457b16d1bfec755",
+    "url": "/static/js/main.3292e7d1.chunk.js"
   },
   {
     "revision": "7d311fb428de6e52df56",
     "url": "/static/js/runtime-main.72907d54.js"
-  },
-  {
-    "revision": "23a1140b43edf2386969f9f87b1caf7e",
-    "url": "/static/media/cardboard.23a1140b.png"
   },
   {
     "revision": "f335e682a7bd36ca827ca3358c78da23",
@@ -36,20 +32,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/dark_vr.2f4834e9.png"
   },
   {
-    "revision": "35d778a7a3573d4efa2bafe7d2deee70",
-    "url": "/static/media/event_item.35d778a7.png"
-  },
-  {
     "revision": "2169d92a031f760da33ee4c68fb9d5d9",
     "url": "/static/media/header-right-backg.2169d92a.png"
   },
   {
-    "revision": "5d5d9eefa31e5e13a6610d9fa7a283bb",
-    "url": "/static/media/logo.5d5d9eef.svg"
+    "revision": "c31b6efbbcf1b6cd95e1eba3c3fbc878",
+    "url": "/static/media/phones.c31b6efb.png"
   },
   {
-    "revision": "55dfd0a5232f5caa30c6b512e132ab89",
-    "url": "/static/media/phones.55dfd0a5.png"
+    "revision": "c4210f853326fba2cecfa8abfd52b8a2",
+    "url": "/static/media/shop_vr.c4210f85.jpeg"
   },
   {
     "revision": "71c23b9f492016b423d2101c67a6cb8e",
