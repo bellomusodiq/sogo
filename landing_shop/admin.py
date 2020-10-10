@@ -11,6 +11,18 @@ class TermsOfServiceAdmin(QuillAdmin):
         models.TextField: {'widget': QuillEditorWidget},
     }
 
+
+class PrivatePolicyAdmin(QuillAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': QuillEditorWidget},
+    }
+
+
+class AboutAdmin(QuillAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': QuillEditorWidget},
+    }
+
 # Register your models here.
 
 
@@ -22,9 +34,9 @@ admin.site.register(Event)
 
 admin.site.register(Contact)
 
-admin.site.register(PrivatePolicy)
+admin.site.register(PrivatePolicy, PrivatePolicyAdmin)
 
-admin.site.register(About)
+admin.site.register(About, AboutAdmin)
 
 admin.site.register(Product)
 
