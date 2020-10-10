@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'accounts',
     'events',
-    'landing_shop'
+    'landing_shop',
+    # 'trumbowyg',
+    'quilljs',
 
 ]
 
@@ -170,14 +172,14 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
 }
 
-PAYSTACK_PUBLIC_KEY='pk_test_d3f01ffa7bdb152e694edb9cdb174138e1da33aa',
-PAYSTACK_SECRET_KEY='sk_test_40842031d9cd521f662260d98a0248ed8c569d73'
+PAYSTACK_PUBLIC_KEY='pk_test_08cd5a853ea5782862612e8eca0d112248bb5fe4'
+PAYSTACK_SECRET_KEY='sk_test_89c0525a6bc3f1b6877e8b793aa46601342bf4e5'
 
 
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = '119a9d1cfc2983'
-EMAIL_HOST_PASSWORD = '22e7e4fc62f0aa'
-EMAIL_PORT = '2525'
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_HOST_USER = 'noreply@sogovr.com'
+EMAIL_HOST_PASSWORD = 'Sogo@2020'
+EMAIL_PORT = '25'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')

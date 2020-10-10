@@ -60,8 +60,20 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CartSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Cart
+        fields = '__all__'
+
+
 class CartProductSerializer(serializers.ModelSerializer):
+
+    product_obj = serializers.SerializerMethodField()
     
     class Meta:
         model = CartProduct
         fields = '__all__'
+
+    def get_product_obj(self, obj):
+        return ProductSerializer(obj.product).data

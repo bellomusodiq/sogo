@@ -2,10 +2,14 @@ from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from .models import Landing, PrivatePolicy, TermsOfService, \
-    Event, Contact, About, Product
+    Event, Contact, About, Product, Cart, CartProduct, Order, OrderProduct
 from .serializers import LandingSerializer, PrivatePolicySerializer, TermsOfServiceSerializer, \
-    EventSerializer, ContactSerializer, AboutSerializer, ProductSerializer
+    EventSerializer, ContactSerializer, AboutSerializer, ProductSerializer, CartProductSerializer, \
+    CartSerializer
 from rest_framework.views import APIView
+import requests
+from django.conf import settings
+
 
 # Create your views here.
 
@@ -83,3 +87,66 @@ class ProductViewSet(ModelViewSet):
 
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+
+
+class CartViewSet(ModelViewSet):
+
+    serializer_class = CartSerializer
+    queryset = Cart.objects.all()
+
+
+class CartProductViewSet(ModelViewSet):
+
+    serializer_class = CartProductSerializer
+
+    def get_queryset(self):
+        queryset = CartProduct.objects.all()
+        cart = self.request.GET.get('cart')
+        if cart:
+            if cart != 'null':
+                queryset = queryset.filter(cart__id=cart)
+            else:
+                queryset = []
+        return queryset
+
+
+class VerifyPayment(APIView):
+
+    def post(self, request):
+        url = 'https://api.paystack.co/transaction/verify/' + request.data.get('ref')
+
+        cart_id = request.data.get('cart_id')
+        try:
+            cart = Cart.objects.get(id=cart_id)
+            amount = 0
+            for product in cart.cartproduct_set.all():
+                amount += (product.product.price * product.quantity)
+            amount = int(amount * 100)
+            headers = {
+                'Authorization': 'Bearer {}'.format(settings.PAYSTACK_SECRET_KEY)
+            }
+            x = requests.get(url, headers=headers)
+            res = x.json()
+            if (res['status'] and (amount == res['data']['amount'])):
+                order = Order.objects.create(
+                    amount=amount/100,
+                    email=request.data.get('email'),
+                    ref=request.data.get('ref'),
+                    name=request.data.get('name'),
+                    street_name=request.data.get('street_name'),
+                    city=request.data.get('city'),
+                    country=request.data.get('country'),
+                    zip_code=request.data.get('zip_code'),
+                )
+                for product in cart.cartproduct_set.all():
+                    OrderProduct.objects.create(
+                        order=order,
+                        product=product.product,
+                        quantity=product.quantity
+                    )
+                return Response({'message': 'payment was successful'})
+            return Response({'message': 'payment was not successful'}, 400)
+        except Cart.DoesNotExist:
+            return Response({'message': 'cart id does not exist'}, 400)
+
+

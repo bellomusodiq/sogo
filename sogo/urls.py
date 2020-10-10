@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework import routers
 
 from accounts.views import (
@@ -33,7 +33,8 @@ from landing_shop.views import (
     LandingView, ContactViewSet,
     FooterView, TermsOfServiceView,
     PrivatePolicyView, AboutView,
-    ProductViewSet
+    ProductViewSet, CartViewSet,
+    CartProductViewSet, VerifyPayment
 )
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
 from django.conf.urls.static import static
@@ -53,6 +54,8 @@ router.register('profile', ProfileAndVRViewSet, 'profile')
 router.register('feed-back', FeedBackViewSet, 'feed-back')
 router.register('contact', ContactViewSet, 'contact')
 router.register('products', ProductViewSet, 'products')
+router.register('cart', CartViewSet, 'cart')
+router.register('cart-products', CartProductViewSet, 'cart-products')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -69,7 +72,9 @@ urlpatterns = [
     path('api/terms/', TermsOfServiceView.as_view()),
     path('api/privacy/', PrivatePolicyView.as_view()),
     path('api/about/', AboutView.as_view()),
-    path('', TemplateView.as_view(template_name='index.html'))
+    path('api/verify-payment/', VerifyPayment.as_view()),
+    # re_path(r'^trumbowyg/', include('trumbowyg.urls')),
+    re_path(r'^(?P<path>.*)/$', TemplateView.as_view(template_name='index.html'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

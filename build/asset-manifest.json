@@ -1,31 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.e7fef0ae.chunk.css",
-    "main.js": "/static/js/main.a459b2a8.chunk.js",
-    "main.js.map": "/static/js/main.a459b2a8.chunk.js.map",
+    "main.css": "/static/css/main.39046636.chunk.css",
+    "main.js": "/static/js/main.40c807b2.chunk.js",
+    "main.js.map": "/static/js/main.40c807b2.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.72907d54.js",
     "runtime-main.js.map": "/static/js/runtime-main.72907d54.js.map",
-    "static/js/2.1408aab3.chunk.js": "/static/js/2.1408aab3.chunk.js",
-    "static/js/2.1408aab3.chunk.js.map": "/static/js/2.1408aab3.chunk.js.map",
+    "static/js/2.a2ab6b64.chunk.js": "/static/js/2.a2ab6b64.chunk.js",
+    "static/js/2.a2ab6b64.chunk.js.map": "/static/js/2.a2ab6b64.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.c3a62598df1f7cfa795ccd7a7eb1cc18.js": "/precache-manifest.c3a62598df1f7cfa795ccd7a7eb1cc18.js",
+    "precache-manifest.d66e79d3ca7eb145c6180152ed148125.js": "/precache-manifest.d66e79d3ca7eb145c6180152ed148125.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.e7fef0ae.chunk.css.map": "/static/css/main.e7fef0ae.chunk.css.map",
-    "static/js/2.1408aab3.chunk.js.LICENSE.txt": "/static/js/2.1408aab3.chunk.js.LICENSE.txt",
+    "static/css/main.39046636.chunk.css.map": "/static/css/main.39046636.chunk.css.map",
+    "static/js/2.a2ab6b64.chunk.js.LICENSE.txt": "/static/js/2.a2ab6b64.chunk.js.LICENSE.txt",
     "static/media/contact_us_vr.png": "/static/media/contact_us_vr.f335e682.png",
     "static/media/dark_vr.png": "/static/media/dark_vr.2f4834e9.png",
     "static/media/OtherHeader.css": "/static/media/header-right-backg.2169d92a.png",
-    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg",
-    "static/media/phones.png": "/static/media/phones.c31b6efb.png",
     "static/media/shop_vr.jpeg": "/static/media/shop_vr.c4210f85.jpeg",
     "static/media/subscribe_vr.png": "/static/media/subscribe_vr.71c23b9f.png",
-    "static/media/user1.png": "/static/media/user1.af1df060.png",
-    "static/media/vr_woman.png": "/static/media/vr_woman.5efc8d1e.png"
+    "static/media/user1.png": "/static/media/user1.af1df060.png"
   },
   "entrypoints": [
     "static/js/runtime-main.72907d54.js",
-    "static/js/2.1408aab3.chunk.js",
-    "static/css/main.e7fef0ae.chunk.css",
-    "static/js/main.a459b2a8.chunk.js"
+    "static/js/2.a2ab6b64.chunk.js",
+    "static/css/main.39046636.chunk.css",
+    "static/js/main.40c807b2.chunk.js"
   ]
 }
