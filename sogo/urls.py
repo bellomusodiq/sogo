@@ -34,7 +34,8 @@ from landing_shop.views import (
     FooterView, TermsOfServiceView,
     PrivatePolicyView, AboutView,
     ProductViewSet, CartViewSet,
-    CartProductViewSet, VerifyPayment
+    CartProductViewSet, VerifyPayment,
+    FaqViewSet
 )
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
 from django.conf.urls.static import static
@@ -56,6 +57,7 @@ router.register('contact', ContactViewSet, 'contact')
 router.register('products', ProductViewSet, 'products')
 router.register('cart', CartViewSet, 'cart')
 router.register('cart-products', CartProductViewSet, 'cart-products')
+router.register('faq', FaqViewSet, 'faq')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

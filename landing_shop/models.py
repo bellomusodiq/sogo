@@ -139,3 +139,11 @@ class OrderProduct(models.Model):
 
     def __str__(self):
         return self.order.email
+
+
+class Faq(models.Model):
+    question = models.CharField(max_length=400)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.question

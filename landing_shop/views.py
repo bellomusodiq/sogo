@@ -2,10 +2,10 @@ from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from .models import Landing, PrivatePolicy, TermsOfService, \
-    Event, Contact, About, Product, Cart, CartProduct, Order, OrderProduct
+    Event, Contact, About, Product, Cart, CartProduct, Order, OrderProduct, Faq
 from .serializers import LandingSerializer, PrivatePolicySerializer, TermsOfServiceSerializer, \
     EventSerializer, ContactSerializer, AboutSerializer, ProductSerializer, CartProductSerializer, \
-    CartSerializer
+    CartSerializer, FaqSerializer
 from rest_framework.views import APIView
 import requests
 from django.conf import settings
@@ -93,6 +93,12 @@ class CartViewSet(ModelViewSet):
 
     serializer_class = CartSerializer
     queryset = Cart.objects.all()
+
+
+class FaqViewSet(ModelViewSet):
+
+    serializer_class = FaqSerializer
+    queryset = Faq.objects.all()
 
 
 class CartProductViewSet(ModelViewSet):

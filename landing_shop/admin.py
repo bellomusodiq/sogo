@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from .models import Landing, TermsOfService, Event, Contact, PrivatePolicy, \
-    About, Product, Cart, CartProduct, Order, OrderProduct
+    About, Product, Cart, CartProduct, Order, OrderProduct, Faq
 from quilljs.widgets import QuillEditorWidget
 from quilljs.admin import QuillAdmin
 
@@ -23,6 +23,12 @@ class AboutAdmin(QuillAdmin):
         models.TextField: {'widget': QuillEditorWidget},
     }
 
+
+class FaqAdmin(QuillAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': QuillEditorWidget},
+    }
+
 # Register your models here.
 
 
@@ -35,6 +41,8 @@ admin.site.register(Event)
 admin.site.register(Contact)
 
 admin.site.register(PrivatePolicy, PrivatePolicyAdmin)
+
+admin.site.register(Faq, FaqAdmin)
 
 admin.site.register(About, AboutAdmin)
 
