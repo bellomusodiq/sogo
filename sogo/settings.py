@@ -176,11 +176,12 @@ PAYSTACK_PUBLIC_KEY='pk_test_08cd5a853ea5782862612e8eca0d112248bb5fe4'
 PAYSTACK_SECRET_KEY='sk_test_89c0525a6bc3f1b6877e8b793aa46601342bf4e5'
 
 
-EMAIL_HOST = 'smtp.zoho.com'
-EMAIL_HOST_USER = 'noreply@sogovr.com'
-EMAIL_HOST_PASSWORD = 'Sogo@2020'
-EMAIL_PORT = '25'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "info@sogovr.com"
+EMAIL_HOST_PASSWORD = "Alpha@2020"
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
