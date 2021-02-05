@@ -21,7 +21,8 @@ from accounts.views import (
     UserViewSet, ProfileAndVRViewSet,
     ChangePassword,
     SendResetPassword, ConfirmResetToken,
-    ResetPassword, FeedBackViewSet
+    ResetPassword, FeedBackViewSet,
+    ResendActivationToken
 )
 from events.views import (
     CategoryViewSet, NotificationViewSet,
@@ -75,6 +76,7 @@ urlpatterns = [
     path('api/privacy/', PrivatePolicyView.as_view()),
     path('api/about/', AboutView.as_view()),
     path('api/verify-payment/', VerifyPayment.as_view()),
+    path('api/send-activation-token/', ResendActivationToken.as_view()),
     # re_path(r'^trumbowyg/', include('trumbowyg.urls')),
 ]
 
