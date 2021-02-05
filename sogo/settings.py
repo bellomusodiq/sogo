@@ -172,8 +172,8 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
 }
 
-PAYSTACK_PUBLIC_KEY='pk_test_08cd5a853ea5782862612e8eca0d112248bb5fe4'
-PAYSTACK_SECRET_KEY='sk_test_89c0525a6bc3f1b6877e8b793aa46601342bf4e5'
+PAYSTACK_PUBLIC_KEY=config('PAYSTACK_PUBLIC')
+PAYSTACK_SECRET_KEY=config('PAYSTACK_SECRET')
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
