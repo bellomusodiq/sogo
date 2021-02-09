@@ -18,6 +18,7 @@ class ProfileAndVR(models.Model):
     vr_state = models.CharField(max_length=225, blank=True, null=True)
     vr_zip_code = models.CharField(max_length=225, blank=True, null=True)
     vr_phone_number = models.CharField(max_length=225, blank=True, null=True)
+    activation_token = models.CharField(max_length=225, blank=True, null=True)
 
 
 class FeedBack(models.Model):
@@ -57,5 +58,11 @@ def reset_token(sender, instance, created, *args, **kwargs):
         instance.reset_token = generate_token()
         instance.save()
 
+def activation_token(sender, instance, created, *args, **kwargs):
+    if not instance.activation_token:
+        instance.activation_token = generate_token()
+        instance.save()
+
 
 post_save.connect(reset_token, sender=AccountResetLink)
+post_save.connect(activation_token, sender=ProfileAndVR)

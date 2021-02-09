@@ -11,6 +11,7 @@ import datetime
 from django.utils import timezone
 import string
 import random
+from sogo.scheduler import scheduler
 
 # Create your views here.
 
@@ -35,11 +36,11 @@ def send_activation_token(user, profile):
         profile.activation_token = set_activation_token()
         profile.save()
     subject, from_email, to = 'Activate your account', \
-                              'admin@lms.com.ng', user.email
+                              'info@sogovr.com', user.email
     text_content = 'Hey {} please reset password'.format(user.username)
     html_content = '<p>Hey {a} please reset password .' \
-                   '</p><a href="https://sogovr.com/reset-password/{b}">' \
-                   'https://sogovr.com/reset-password/{b}</a>' \
+                   '</p><a href="https://sogovr.com/activate-account/{b}">' \
+                   'https://sogovr.com/activate-account/{b}</a>' \
         .format(a=user.username, b=profile.activation_token)
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
     msg.attach_alternative(html_content, "text/html")
@@ -96,6 +97,7 @@ class ResendActivationToken(APIView):
 
     def post(self, request):
         email = request.data.get("email")
+        print(email)
 
         errors = []
 
@@ -107,7 +109,9 @@ class ResendActivationToken(APIView):
         try:
             user = User.objects.get(email=email)
             profile = ProfileAndVR.objects.get(user=user)
-            send_activation_token(user, profile)
+            # send_activation_token(user, profile)
+            scheduler.add_job(send_activation_token, 'date', run_date=timezone.now(),
+                          args=[user, profile])
             return Response({"message": "activation token resent to your email"},
                             status=status.HTTP_200_OK)
         except:
@@ -162,6 +166,39 @@ class SendResetPassword(APIView):
                 return link
         return link
 
+    def send_reset_link(self, email, user, link):
+        subject, from_email, to = 'FORGOT YOUR PASSWORD?', 'info@sogovr.com', email
+        text_content =  """
+                        There was a request to change your password!, 
+                        If did not make this request, just ignore this email. 
+                        Otherwise, please click the button below to change your password:
+                        https://sogovr.com/reset-password/{}
+
+                        For security, this request was received from Alpha and Nimbus.
+                        If you did not request a password reset, please ignore this email or contact
+                        admin@sogovr.com if you have question
+                        """.format(link.reset_token)
+        html_content = """
+                        <div style="padding: 20px;">
+                        <p>Hey {a} please reset password</p>
+                        <p>There was a request to change your password!,</p>
+                        <p style="margin-bottom: 30px"> If did not make this request, just ignore this email. 
+                        Otherwise, please click the button below to change your password: </p>
+                        <a style="margin: 20px 0 auto; padding: 20px 50px; border: 1px solid black; border-radius: 20px; margin-top: 30px; margin-bottom: 30px"
+                         href="https://sogovr.com/reset-password/{b}">
+                        RESET PASSWORD</a>
+                        <p style="margin-top: 30px">
+                        For security, this request was received from Alpha and Nimbus.
+                        If you did not request a password reset, please ignore this email or contact
+                        <a mailto="admin@sogovr.com" >admin@sogovr.com</a> if you have question
+                        </p>
+                        </div>
+                      """.format(a=user.username, b=link.reset_token)
+        msg = EmailMultiAlternatives(
+            subject, text_content, from_email, [to])
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
+
     def post(self, request):
         email = request.data.get('email')
         if not email:
@@ -170,16 +207,8 @@ class SendResetPassword(APIView):
         user = self.get_user_or_none(email)
         if user:
             link = self.get_link(user)
-            subject, from_email, to = 'Reset password from Holidaypro', 'admin@holidaypro.com.ng', email
-            text_content = 'Hey {} please reset password'.format(user.username)
-            html_content = '<p>Hey {a} please reset password .' \
-                           '</p><a href="https://sogovr.com/reset-password/{b}">' \
-                           'https://sogovr.com/reset-password/{b}</a>' \
-                .format(a=user.username, b=link.reset_token)
-            msg = EmailMultiAlternatives(
-                subject, text_content, from_email, [to])
-            msg.attach_alternative(html_content, "text/html")
-            msg.send()
+            scheduler.add_job(self.send_reset_link, 'date', run_date=timezone.now(),
+                          args=[email, user, link])
             return Response({"message": "Reset link has been sent to your account"},
                             status=status.HTTP_200_OK)
         else:
