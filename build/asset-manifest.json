@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.1414dced.chunk.css",
-    "main.js": "/static/js/main.fa63387b.chunk.js",
-    "main.js.map": "/static/js/main.fa63387b.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.1cf2afc0.js",
-    "runtime-main.js.map": "/static/js/runtime-main.1cf2afc0.js.map",
+    "main.css": "/static/css/main.2aa6411a.chunk.css",
+    "main.js": "/static/js/main.2d30c8a9.chunk.js",
+    "main.js.map": "/static/js/main.2d30c8a9.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.3257ba8d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.3257ba8d.js.map",
     "static/js/2.bb3f45c4.chunk.js": "/static/js/2.bb3f45c4.chunk.js",
     "static/js/2.bb3f45c4.chunk.js.map": "/static/js/2.bb3f45c4.chunk.js.map",
-    "static/js/3.fb7b65cc.chunk.js": "/static/js/3.fb7b65cc.chunk.js",
-    "static/js/3.fb7b65cc.chunk.js.map": "/static/js/3.fb7b65cc.chunk.js.map",
+    "static/js/3.a1531ec7.chunk.js": "/static/js/3.a1531ec7.chunk.js",
+    "static/js/3.a1531ec7.chunk.js.map": "/static/js/3.a1531ec7.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.1414dced.chunk.css.map": "/static/css/main.1414dced.chunk.css.map",
+    "static/css/main.2aa6411a.chunk.css.map": "/static/css/main.2aa6411a.chunk.css.map",
     "static/js/2.bb3f45c4.chunk.js.LICENSE.txt": "/static/js/2.bb3f45c4.chunk.js.LICENSE.txt",
     "static/media/App.css": "/static/media/Gilroy-Light.cc7ab55d.otf",
     "static/media/LIVE AND PLAYBACK SHOWS.623ca229.jpg": "/static/media/LIVE AND PLAYBACK SHOWS.623ca229.jpg",
     "static/media/SPECIAL FEATURES.a493ba5b.jpg": "/static/media/SPECIAL FEATURES.a493ba5b.jpg",
     "static/media/VARIETY OF MUSIC.f2b84ef2.jpg": "/static/media/VARIETY OF MUSIC.f2b84ef2.jpg",
     "static/media/VOCUMENTARIES.82fa7916.jpg": "/static/media/VOCUMENTARIES.82fa7916.jpg",
-    "static/media/WEB.39239116.jpg": "/static/media/WEB.39239116.jpg",
+    "static/media/WEB.81391b68.jpg": "/static/media/WEB.81391b68.jpg",
     "static/media/app-store.40a3f03b.png": "/static/media/app-store.40a3f03b.png",
     "static/media/app-store2.9dce1715.png": "/static/media/app-store2.9dce1715.png",
     "static/media/Header.css": "/static/media/banner-image.b14ec84e.png",
@@ -32,9 +32,9 @@
     "static/media/republicom.5e25e5d3.png": "/static/media/republicom.5e25e5d3.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.1cf2afc0.js",
+    "static/js/runtime-main.3257ba8d.js",
     "static/js/2.bb3f45c4.chunk.js",
-    "static/css/main.1414dced.chunk.css",
-    "static/js/main.fa63387b.chunk.js"
+    "static/css/main.2aa6411a.chunk.css",
+    "static/js/main.2d30c8a9.chunk.js"
   ]
 }
